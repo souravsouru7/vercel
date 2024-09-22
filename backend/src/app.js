@@ -13,7 +13,13 @@ const bookingRoutes = require('./interfaces/routes/bookingRoutes');
 const paymentRoutes = require('./interfaces/routes/paymentRoutes');
 const app = express();
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use(cors());
+app.use(cors(
+  {
+    origin:{},
+    methods:{"POST","GET","PUT","DELETE","PATCH"},
+    credentials:true
+  }
+))
 app.use(express.json());
 
 const dbUri = process.env.DB_URI;
